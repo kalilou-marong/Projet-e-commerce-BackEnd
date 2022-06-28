@@ -11,4 +11,16 @@ function connexion(){
         die('Erreur : ' . $e->getMessage());
     }
 }
+
+
+$sqlQuery = 'SELECT * FROM utilisateur';
+$recipesStatement = $mysqlClonnexion->prepare($sqlQuery);
+$recipesStatement->execute();
+$recipes = $recipesStatement->fetchAll();
+
+foreach ($recipes as $recipe) {
+?>
+    <p><?php echo $recipe['author']; ?></p>
+<?php
+}
 ?>
